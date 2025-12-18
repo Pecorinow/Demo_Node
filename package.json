@@ -1,0 +1,19 @@
+{
+  "name": "demo_node",
+  "version": "1.0.0",
+  "description": "premier serveur Node",
+  "keywords": [
+    "demo",
+    "serveur"
+  ],
+  "license": "ISC",
+  "author": "Caroline Poveda",
+  "type": "commonjs",
+  "main": "\t",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start" : "node index.js"
+  }
+
+  
+}
