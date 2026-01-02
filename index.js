@@ -4,6 +4,23 @@ const trainers = [
     { id : 3, firstname : 'Quentin', lastname : 'Geerts'}
 ]
 
+const camarades = [
+    { id : 1, firstname : 'Amna'},
+    { id : 2, firstname : 'Audrey'},
+    { id : 3, firstname : 'Ceyda'},
+    { id : 4, firstname : 'Charlotte'},
+    { id : 5, firstname : 'Denisa'},
+    { id : 6, firstname : 'Faouzia'},
+    { id : 7, firstname : 'Liene'},
+    { id : 8, firstname : 'Louise'},
+    { id : 9, firstname : 'Maëlle'},
+    { id : 10, firstname : 'Nabila'},
+    { id : 11, firstname : 'Omema'},
+    { id : 12, firstname : 'Ronak'},
+    { id : 13, firstname : 'Sara'},
+    { id : 14, firstname : 'Victoria'}
+]
+
 
 //! 1) Création du serveur
 //? 1) Import du module http pour créer le serveur
@@ -42,7 +59,8 @@ const server = http.createServer((req, res) => {
             <body>
                 <h1>Bienvenue à la formation Web Dev Full Stack de I3</h1>
                 <h2>Nous sommes le ${new Date().toLocaleDateString('fr-BE')} </h2>
-                <a href="/trainers">Cliquez ici pour découvrir la liste des formateurs</a>
+                <a href="/trainers">Cliquez ici pour découvrir la liste des formateurs</a> <br>
+                <a href="/camarades">Cliquez ici pour découvrir la liste de mes petites camarades hihihi ✨</a>
             </body>
             </html>
         `); // Donc, quand on remplira la condition du if, on aura une réponse 200 avec le res.end !
@@ -67,7 +85,30 @@ const server = http.createServer((req, res) => {
             </body>
             </html>
         `);
-    } else {
+    } else if (URL === '/students' && METHOD === 'GET'){
+        res.writeHead(200);
+        res.end(`
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Formation - Liste Camarades</title>
+            </head>
+            <body>
+                <h1>Voici la liste de mes camarades hihihi</h1>
+                <a href="/">Cliquez ici pour revenir à la page d'accueil</a>
+
+                <ul>
+                    <!-- utilisation d'un reducer pour transformer le tableau en une seule chaine de caractère contenant le html -->
+                    ${camarades.reduce((lesLi, camarade) => lesLi + `<li>${camarade.firstname}</li>` , '')}
+                </ul>
+            </body>
+            </html>
+        `)
+    }
+    
+    else {
         res.writeHead(200);
         res.end(`
             <!DOCTYPE html>
